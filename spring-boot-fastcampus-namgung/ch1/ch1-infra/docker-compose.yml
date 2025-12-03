@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  mysql:
+    container_name: local-mysql
+    image: mysql:8.0
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: example        # root 비밀번호
+      MYSQL_DATABASE: testdb              # 최초 생성 DB
+      MYSQL_USER: localuser               # 일반 사용자
+      MYSQL_PASSWORD: localpw             # 일반 사용자 비밀번호
+    volumes:
+      - ./data/mysql:/var/lib/mysql       # 로컬 데이터 영구 저장
+    command: >
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci

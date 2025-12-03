@@ -13,3 +13,20 @@ soo-vue-vite-boilerplate/src/components/layout/PageB_origin.vue
 soo-vue-vite-boilerplate/src/components/layout/PageB_v1.vue
 
 *.md
+
+
+
+# mysql
+spring-boot-fastcampus-namgung/ch1/ch1-infra/data/
+
+spring-boot-fastcampus-namgung/ch1/HELP.md
+spring-boot-fastcampus-namgung/ch1/target/
+spring-boot-fastcampus-namgung/ch1/.mvn/wrapper/maven-wrapper.jar
+spring-boot-fastcampus-namgung/ch1/!**/src/main/**/target/
+spring-boot-fastcampus-namgung/ch1/!**/src/test/**/target/
+
+### IntelliJ IDEA ###
+spring-boot-fastcampus-namgung/ch1/.idea
+spring-boot-fastcampus-namgung/ch1/*.iws
+spring-boot-fastcampus-namgung/ch1/*.iml
+spring-boot-fastcampus-namgung/ch1/*.ipr
