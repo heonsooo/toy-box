@@ -14,22 +14,11 @@ import java.util.Enumeration;
 public class YoilTeller {
 
   @RequestMapping("/yoil")
-  public void main(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-    // 1. 입력
-    String year = request.getParameter("year");
-    String month = request.getParameter("month");
-    String day = request.getParameter("day");
-
-    int yyyy = Integer.parseInt(year);
-    int mm = Integer.parseInt(month);
-    int dd = Integer.parseInt(day);
-
+  public void main(int year, int month, int day, HttpServletResponse response) throws IOException {
 
     // 2. 처리
     Calendar cal = Calendar.getInstance();
-    cal.clear();
-    cal.set(yyyy, mm - 1, dd);
+    cal.set(year, month - 1, day);
 
     int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
     char yoil = "일월화수목금토".charAt(dayOfWeek - 1);
