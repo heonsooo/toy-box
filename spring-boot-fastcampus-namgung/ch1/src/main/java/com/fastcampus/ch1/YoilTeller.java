@@ -13,38 +13,44 @@ import java.util.Enumeration;
 @RestController
 public class YoilTeller {
 
-    @RequestMapping("/yoil")
-    public void main(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String year = request.getParameter("year");
-        String month = request.getParameter("month");
-        String day = request.getParameter("day");
+  @RequestMapping("/yoil")
+  public void main(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        int yyyy = Integer.parseInt(year);
-        int mm = Integer.parseInt(month);
-        int dd = Integer.parseInt(day);
+    // 1. 입력
+    String year = request.getParameter("year");
+    String month = request.getParameter("month");
+    String day = request.getParameter("day");
 
-        Calendar cal = Calendar.getInstance();
-        cal.clear();
-        cal.set(yyyy, mm - 1, dd);
+    int yyyy = Integer.parseInt(year);
+    int mm = Integer.parseInt(month);
+    int dd = Integer.parseInt(day);
 
-        int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
-        char yoil = "일월화수목금토".charAt(dayOfWeek - 1);
 
-        response.setCharacterEncoding("utf-8");
-        PrintWriter out = response.getWriter();
+    // 2. 처리
+    Calendar cal = Calendar.getInstance();
+    cal.clear();
+    cal.set(yyyy, mm - 1, dd);
 
-        out.println("<html >");
-        out.println("<head>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println( "year = "+year );
-        out.println( "month = "+month );
-        out.println( "day = "+day );
-        out.println( "yoil = "+yoil );
+    int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+    char yoil = "일월화수목금토".charAt(dayOfWeek - 1);
+
+
+    // 3. 출력
+    response.setCharacterEncoding("utf-8");
+    PrintWriter out = response.getWriter();
+
+    out.println("<html >");
+    out.println("<head>");
+    out.println("</head>");
+    out.println("<body>");
+    out.println("year = " + year);
+    out.println("month = " + month);
+    out.println("day = " + day);
+    out.println("yoil = " + yoil);
 //        out.println( "오늘 날짜 : "+cal );
-        out.println("</body>");
-        out.println("</html>");
+    out.println("</body>");
+    out.println("</html>");
 
 //        return "yoil";
-    }
+  }
 }
