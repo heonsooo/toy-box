@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,7 +14,7 @@ import java.util.Calendar;
 public class YoilTeller {
 
   @RequestMapping("/yoil")
-  public String main(int year, int month, int day, Model model) throws IOException {
+  public void main(int year, int month, int day, Model model) throws IOException {
 
     // 2. 처리
     Calendar cal = Calendar.getInstance();
@@ -29,7 +30,7 @@ public class YoilTeller {
     model.addAttribute("yoil", yoil);
 
 
-    return "yoil"; // yoil.html - view의 이름을 반환
+//    return "yoil"; // yoil.html - view의 이름을 반환
 
 
 
