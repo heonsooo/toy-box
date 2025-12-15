@@ -14,7 +14,15 @@ import java.util.Calendar;
 public class YoilTeller {
 
   @RequestMapping("/yoil")
-  public void main(int year, int month, int day, Model model) throws IOException {
+  public ModelAndView main(int year, int month, int day) throws IOException {
+    ModelAndView mv = new ModelAndView();
+    mv.setViewName("yoilError");
+
+    if(!isValid(year, month, day)){
+
+      return mv;
+    }
+
 
     // 2. 처리
     Calendar cal = Calendar.getInstance();
@@ -24,10 +32,13 @@ public class YoilTeller {
     int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
     char yoil = "일월화수목금토".charAt(dayOfWeek - 1);
 
-    model.addAttribute("year", year);
-    model.addAttribute("month", month);
-    model.addAttribute("day", day);
-    model.addAttribute("yoil", yoil);
+    mv.addObject("year", year);
+    mv.addObject("month", month);
+    mv.addObject("day", day);
+    mv.addObject("yoil", yoil);
+    mv.setViewName("yoil");
+
+    return mv ;
 
 
 //    return "yoil"; // yoil.html - view의 이름을 반환
@@ -35,5 +46,19 @@ public class YoilTeller {
 
 
     // 3. 출력
+  }
+
+  private boolean isValid(int year, int month, int day) {
+//    year, month , day validation logic
+    if(year == -1 || month == -1 || day == -1)
+      return false;
+
+    if(month < 1 || month > 12)
+      return false;
+
+    if(day < 1 || day > 31)
+      return false;
+
+    return true;
   }
 }
